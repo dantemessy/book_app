@@ -11,17 +11,19 @@
 
     <h1 > Heloooooo there !</h1>
 
-    <form action="/">
+    <form action="/searches" method="" >
         <p> search by Title or Author </p>
         
-        <input type="text" placeholder="Enter a title or Author">
+        <input type="text" placeholder="Enter a title or Author" name="bookTitle" required>
         <br>
         
-        <input id="title" type="radio" name="title">
+        <input id="title" type="radio" name="title" value="title" required>
         <label for="title"> Title </label>
         <br>
-        <input id="author" type="radio" name="title">
+        <input id="author" type="radio" name="title" value="author" required>
         <label for="title"> Author </label>
+        <br>
+        <input type="submit">
 
 
         </form>
