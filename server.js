@@ -13,7 +13,7 @@ app.set('view engine' , 'ejs') ;
 app.listen(PORT, () => console.log('first Baby Step'));
 
 app.get('/' , (req , res) => {
-  res.status(200).send('Alrrrrrrrright !!')
+  res.render('pages/index')
 });
 
 
