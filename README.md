@@ -25,6 +25,10 @@ Credits for:
 2. Ayman Al-Khawaldeh. https://github.com/aymankhawaldeh
 
 
+## Deployed version link:
+https://book-app-301d2.herokuapp.com/
+
+
 =============================================================================================================
 
 lab11
