@@ -10,7 +10,7 @@ const superagent = require('superagent');
 require('dotenv').config();
 
 app.set('view engine', 'ejs');
-// app.use(express.urlencoded());
+app.use(express.urlencoded({ extended: true }));
 
 
 app.listen(PORT, () => console.log('first Baby Step'));
@@ -19,18 +19,17 @@ app.get('/', (req, res) => {
   res.render('pages/index')
 });
 
-app.get('/searches', booksHandlers);
+app.post('/searches', booksHandler);
 
-function booksHandlers(req, res) {
+function booksHandler(req, res) {
   console.log('handler works')
-  let book = req.query['bookTitle'];
+  let book = req.body.bookTitle;
   console.log(book);
   booksData(book)
     .then((conData) => {
-      app.post('/searches', (req, res) => {
-        res.status(200).sendFile('./show.ejs');
-      })
-      res.send(conData);
+      console.log(conData)
+      res.status(200).render('pages/searches/show', { result: conData });
+      // res.send(conData);
     })
 }
 
@@ -38,18 +37,17 @@ function booksData(bookTitle) {
   const url = `https://www.googleapis.com/books/v1/volumes?q=intitle:${bookTitle}`;
   console.log('data works')
 
-  superagent.get(url)
+  return superagent.get(url)
     .then(data => {
       // console.log(data.body.items[0].volumeInfo.imageLinks.thumbnail);
-      let book = {};
-      book = data.body.items.map((one) => {
-        if (one.volumeInfo.imageLinks.smallThumbnail && one.volumeInfo.title && one.volumeInfo.authors && one.volumeInfo.description) {
-          console.log(one.volumeInfo.authors);
-          return new Book(one);
-        }
-        console.log(book);
+      let book = data.body.items.map((one) => {
+        // if (one.volumeInfo.imageLinks.smallThumbnail && one.volumeInfo.title && one.volumeInfo.authors && one.volumeInfo.description) {
+        // console.log(one.volumeInfo.authors);
+        return new Book(one);
+        // }
+        // console.log(book);
       })
-      // console.log('hiiii', book);
+      console.log('hiiii', book);
       return book;
     });
 }
@@ -59,11 +57,10 @@ function booksData(bookTitle) {
 /// the constuctor function
 
 function Book(data) {
-
-  this.image = data.volumeInfo.imageLinks.smallThumbnail;
-  this.title = data.volumeInfo.title;
-  this.author = data.volumeInfo.authors;
-  this.description = data.volumeInfo.description;
+  this.image = (data.volumeInfo.imageLinks && data.volumeInfo.imageLinks.thumbnail) ? data.volumeInfo.imageLinks.thumbnail:'https://i.imgur.com/J5LVHEL.jpg';
+  this.title = data.volumeInfo.title ? data.volumeInfo.title : 'Title Not Found !!';
+  this.author = data.volumeInfo.authors ? data.volumeInfo.authors : 'Author Not Found !!';
+  this.description = data.volumeInfo.description ? data.volumeInfo.description : 'Descripton Not Found !!';
 
 }
 
@@ -85,8 +82,10 @@ app.use('/public', express.static('public'));
 
 
 // errors
+let message = 'ERROR OCCURED ABORT MISSION!!'
 app.get('*', (req, res) => {
-  res.status(404).send('Ooops 404 !!!')
+  res.status(404).render('./pages/error', { 'message': message }
+  )
 })
 
 

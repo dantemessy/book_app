@@ -1,32 +1,69 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>TesT 101</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book App</title>
 
-    <!-- <link rel="stylesheet" href="/public/styles/reset.css"> -->
-    <link rel="stylesheet" type="text/css" href="public/styles/base.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/public/styles/reset.css"> -->
     <link rel="stylesheet" type="text/css" href="public/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="public/styles/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
-<body>
+<body class="index">
+    
+    <header>
+        <div id="best" style="padding-left:16px">
+          <h3>Best Books!</h3>
+        </div>
 
-    <h1 > Heloooooo there !</h1>
+<!-- Simulate a smartphone / tablet -->
+<div class="mobile-container">
 
-    <form action="/searches" method="" >
+    
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+        <div id="myLinks">
+            <a href="#news">Home</a>
+            <a href="#contact">Results</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+            <i class="fa fa-bars"></i>
+        </a>
+    </div>
+    
+    <!-- End smartphone / tablet look -->
+    </div>
+</header>
+    <h1 > Search by Title or Author</h1>
+
+    <form action="/searches" method="POST" >
         <p> search by Title or Author </p>
         
         <input type="text" placeholder="Enter a title or Author" name="bookTitle" required>
         <br>
         
-        <input id="title" type="radio" name="title" value="title" required>
         <label for="title"> Title </label>
+        <input id="title" type="radio" name="title" value="title" required>
         <br>
-        <input id="author" type="radio" name="title" value="author" required>
         <label for="title"> Author </label>
+        <input id="author" type="radio" name="title" value="author" required>
         <br>
-        <input type="submit">
+        <button type="submit">Search the Google Books API</button>
 
 
         </form>
     
 </body>
+<script>
+    function myFunction() {
+      var x = document.getElementById("myLinks");
+      if (x.style.display === "block") {
+        x.style.display = "none";
+      } else {
+        x.style.display = "block";
+      }
+    }
+    </script>
 </html>

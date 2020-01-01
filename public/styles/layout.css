@@ -1,7 +1,22 @@
-h1{
-    text-align: center;
-}
-
-main {
-    margin: 0 auto;
+@media (max-width: 961px){
+    .index body{
+        width: 960px;
+        width: 90%;
+        margin: 0 auto;
+        text-align: center;
+        
+    }
+    .index header {
+        height: 100px;
+    }
+    .index header div {
+        float: right;
+    }
+    #topnav {
+        float: right;
+    }
+    #best {
+        float: left;
+    }
+    
 }
