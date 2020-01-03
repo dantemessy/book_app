@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>result</title>
+</head>
+<body>
+
+    <header>Best Books!</header> 
+
+    <ul>
+        <% result.forEach( book => { %>
+<li>
+
+    <img src="<%= book.image %>">
+    <h2> <%= book.title %> </h2>
+    <h3> <%= book.author %></h3>
+    <p> <%= book.description %> </p>
+
+
+</li>
+
+
+
+
+            <% }) %>
+
+
+        
+    </ul>
+
+
+
+
+
+</body>
+</html>
