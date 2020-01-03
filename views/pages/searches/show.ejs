@@ -1,36 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>result</title>
+    
+    <link rel="stylesheet" type="text/css" href="/public/styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="public/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="public/styles/base.css">
+    <!-- <link rel="stylesheet" type="text/css" href="/public/styles/modules.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
+
+<header>
+      
+    <!-- Simulate a smartphone / tablet -->
+    <div class="mobile-container">
+      
+      
+      <!-- Top Navigation Menu -->
+      <div class="topnav">
+        <div id="myLinks">
+          <a href="/">Home</a>
+          <a href="/searches">Results</a>
+        </div>
+        <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+          <i class="fa fa-bars"></i>
+        </a>
+      </div>
+      
+      <!-- End smartphone / tablet look -->
+    </div>
+    <div id="best" style="padding-left:16px">
+      <h3>Best Books!</h3>
+    </div>
+</header>
 <body>
-
-    <header>Best Books!</header> 
-
+    
+    <h4 > Search Results</h4>
     <ul>
         <% result.forEach( book => { %>
-<li>
-
+            <li>
+                <div id="book">
+                
     <img src="<%= book.image %>">
-    <h2> <%= book.title %> </h2>
-    <h3> <%= book.author %></h3>
+    <h2> <%= book.title %> </h2> <br>
+    <h2> <%= book.author %></h2>
     <p> <%= book.description %> </p>
 
+</div>      
 
 </li>
-
-
-
-
-            <% }) %>
-
-
-        
+            <% }) %> 
     </ul>
 
-
-
-
-
 </body>
+<footer>
+    &copy; CODE FELLOWS 2019 - amman-301d2
+  </footer>
+  <script>
+      function myFunction() {
+        var x = document.getElementById("myLinks");
+        if (x.style.display === "block") {
+          x.style.display = "none";
+        } else {
+          x.style.display = "block";
+        }
+      }
+      </script>
 </html>

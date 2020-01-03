@@ -1,4 +1,81 @@
+/* mobile */
+
 @media (max-width: 961px){
+     body{
+    
+        margin: 0 auto;
+        text-align: center;
+        
+    }
+     header {
+        height: 70px;
+    }
+     header div {
+        float: right;
+    }
+    .topnav {
+        float: right;
+        padding-top: 22px;
+        margin-right: 20px;
+    }
+    #best {
+        float: left;
+        padding-top: 25px;
+    }
+    div{
+        margin: 0 auto;
+    }
+    h4{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    form{
+        padding-top: 20px;
+        margin: 15px;
+        line-height: 25px;
+    }
+     form div{
+         margin-bottom: 35px;
+     }
+     .input{
+         height: 35px;
+         width: 80%;
+     }
+     footer{
+         text-align: center;
+         height: 50px;
+         padding-top: 30px;
+     }
+    p{
+        line-height: 30px;
+        margin-top: 35px;
+    }
+    #error{
+        height: 50px;
+        padding-top: 20px;
+    }
+    #book{
+        width: 80%;
+        margin-top: 35px;
+    }
+    #book img{
+        width: 50%;
+        height: 400px;
+        margin-top: 35px;
+        margin-bottom: 25px;
+    }
+    #book p {
+        overflow: scroll;
+        width: 80%;
+        height: 300px;
+        margin: 0 auto;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+}
+
+/* Desktop */
+@media (min-width: 961px){
     .index body{
         width: 960px;
         width: 90%;
@@ -7,16 +84,70 @@
         
     }
     .index header {
-        height: 100px;
+        height: 70px;
     }
     .index header div {
         float: right;
     }
-    #topnav {
+    .topnav {
         float: right;
+        padding-top: 22px;
+        margin-right: 20px;
     }
     #best {
         float: left;
+        padding-top: 25px;
     }
-    
+    div{
+        margin: 0 auto;
+    }
+    h4{
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+    form{
+        padding-top: 20px;
+        margin: 15px;
+        line-height: 25px;
+    }
+     form div{
+         margin-bottom: 35px;
+        }
+     .input{
+         height: 35px;
+         width: 80%;
+        }
+        footer{
+            text-align: center;
+         height: 50px;
+         padding-top: 30px;
+        }
+    p{
+        line-height: 30px;
+        margin-top: 35px;
+    }
+    #error{
+        height: 50px;
+        padding-top: 20px;
+    }
+    #book{
+        width: 80%;
+        margin-top: 35px;
+    }
+    #book img{
+        width: 50%;
+        height: 400px;
+        margin-top: 35px;
+        margin-bottom: 25px;
+        margin-left: 25%;
+    }
+    #book p {
+        overflow: scroll;
+        width: 80%;
+        height: 300px;
+        margin: 0 auto;
+        margin-top: 35px;
+        margin-bottom: 35px;
+    }
+                                                                                
 }
