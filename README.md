@@ -1,7 +1,7 @@
 # book_app
 
 **Author**: Ahmad K. & Abdulrahman A.
-**Version**: 0.0.2
+**Version**: 0.0.3
 
 ## Overview
 book-app is our first Full-stack web application, that uses Google's book API, to search for books by either Title or Author, REST is used to work with the API's information with a future hope of using DataBase to get faster results and make a seamless experience especially with our Front-end work, that uses the Mobile-First Methodology.
