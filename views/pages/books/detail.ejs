@@ -1,0 +1,76 @@
+<!-- the form is here -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book App</title>
+  
+    <link rel="stylesheet" type="text/css" href="/public/styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<header>
+  <!-- Simulate a smartphone / tablet -->
+  <div class="mobile-container">
+
+
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+      <div id="myLinks">
+        <a href="/">Home</a>
+        <br>
+        <a href="/searches">Search the Google Books API</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <!-- End smartphone / tablet look -->
+  </div>
+  <div id="best" style="padding-left:16px">
+    <h3>Best Books!</h3>
+  </div>
+
+</header>
+
+
+
+
+<body class="index">
+    <ul>
+        <li>
+          <div id="book">
+    
+            <img src="<%= theChoosenOne.image %>">
+            <h2> <%= theChoosenOne.title %> </h2> 
+            <br>
+            <h2> <%= theChoosenOne.author %></h2>
+            <br>
+            <p> <%= theChoosenOne.description %> </p>
+            <br>
+            <h2> ISBN: <%= theChoosenOne.isbn %> </h2>
+            <h2> Bookshelf: <%= theChoosenOne.bookshelf %> </h2>
+
+
+            
+    
+          </div>
+    
+        </li>
+      </ul>
+</body>
+
+
+<footer>
+
+  &copy; CODE FELLOWS 2019 - amman-301d2
+</footer>
+<script src="public/js/app.js"></script>
+
+</html>
