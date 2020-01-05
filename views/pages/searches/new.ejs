@@ -10,8 +10,8 @@
   <title>Book App</title>
 
   <link rel="stylesheet" type="text/css" href="/public/styles/reset.css">
-  <link rel="stylesheet" type="text/css" href="/public/styles/base.css">
-  <link rel="stylesheet" type="text/css" href="/public/styles/layout.css">
+  <link rel="stylesheet" type="text/css" href="public/styles/layout.css">
+  <link rel="stylesheet" type="text/css" href="public/styles/base.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <header>
@@ -23,8 +23,7 @@
     <div class="topnav">
       <div id="myLinks">
         <a href="/">Home</a>
-        <br>
-        <a href="/form">Search the Google Books API</a>
+        <a href="/searches">Results</a>
       </div>
       <a href="javascript:void(0);" class="icon" onclick="myFunction()">
         <i class="fa fa-bars"></i>
@@ -39,32 +38,31 @@
 
 </header>
 
-
-
-
 <body class="index">
-    <h2> <%= library[library.length-1].id %> Saved Books </h2>
-    <ul>
-        <% library.forEach( book => { %>
-        <li>
-          <div id="book" data-id="<%= book.id %>">
-    
-            <img src="<%= book.image_url %>">
-            <h2> <%= book.title %> </h2> <br>
-            <h2> <%= book.author %></h2>
-            <br>
-            <a class="viewD" href="/details/<%= book.id %>"> View Details </a>
-    
-          </div>
-    
-        </li>
-        <% }) %>
-      </ul>
+
+
+  <h4> Search by Title or Author</h4>
+
+  <form action="/searches" method="POST">
+    <div>
+      <input class="input" type="text" placeholder="Enter a title or Author" name="bookTitle" required>
+    </div>
+    <div class="input" id="titleId">
+      <label for="title"> Title </label>
+      <input id="title" type="radio" name="title" value="title" required>
+    </div>
+    <div class="input" id="titleId">
+      <label for="title"> Author </label>
+      <input id="author" type="radio" name="title" value="author" required>
+    </div>
+    <button class="input" type="submit">Search the Google Books API</button>
+
+
+  </form>
 
 </body>
-
-
 <footer>
+  <!-- <%- include('/mnt/c/Users/std13/projects/new301/book_app/views/layout/footer.ejs') %> -->
 
   &copy; CODE FELLOWS 2019 - amman-301d2
 </footer>
