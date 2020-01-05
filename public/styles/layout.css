@@ -76,6 +76,13 @@
 
 /* Desktop */
 @media (min-width: 961px){
+  
+    .index h2 {
+        text-align: center;
+        
+    }
+
+ 
     .index body{
         width: 960px;
         width: 90%;

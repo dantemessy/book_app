@@ -1,0 +1,107 @@
+<!-- the form is here -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Book App</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+    <link rel="stylesheet" type="text/css" href="/public/styles/reset.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/layout.css">
+    <link rel="stylesheet" type="text/css" href="/public/styles/base.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<header>
+  <!-- Simulate a smartphone / tablet -->
+  <div class="mobile-container">
+
+
+    <!-- Top Navigation Menu -->
+    <div class="topnav">
+      <div id="myLinks">
+        <a href="/">Home</a>
+        <br>
+        <a href="/searches">Search the Google Books API</a>
+      </div>
+      <a href="javascript:void(0);" class="icon" onclick="myFunction()">
+        <i class="fa fa-bars"></i>
+      </a>
+    </div>
+
+    <!-- End smartphone / tablet look -->
+  </div>
+  <div id="best" style="padding-left:16px">
+    <h3>Best Books!</h3>
+  </div>
+
+</header>
+
+
+
+
+<body class="index">
+    <ul>
+        <li>
+          <div id="book">
+    
+            <img src="<%= theChoosenOne.image_url %>">
+            <h2> <%= theChoosenOne.title %> </h2> 
+            <br>
+            <h2> <%= theChoosenOne.author %></h2>
+            <br>
+            <p> <%= theChoosenOne.description %> </p>
+            <br>
+            <h2> ISBN: <%= theChoosenOne.isbn %> </h2>
+            <h2> Bookshelf: <%= theChoosenOne.bookshelf %> </h2>
+
+            <button id="up" >update details</button> 
+          </div>
+
+          <form action="/delete/<%= theChoosenOne.id %>?_method=DELETE" method="POST">
+            <button type="submit"> delete book </button>
+          </form>
+
+          <div>
+            <form action="/update/<%= theChoosenOne.id %>?_method=PUT" method="POST" id="hiddenForm" style="display: none;">
+
+              <input name="title" type="text" value="<%= theChoosenOne.title %>">
+              <br>
+              <input name="author" type="text" value="<%= theChoosenOne.author %>">
+              <br>
+              <input name="isbn" type="text" name="" id="" value="<%= theChoosenOne.isbn %>">
+              <br>
+              <input name="image" type="text" value="<%= theChoosenOne.image_url %>">
+              <br>
+              <input name="description" type="text" value="<%= theChoosenOne.description %>">
+              <br>
+              <input name="bookshelf" type="text" value="<%= theChoosenOne.bookshelf %>">
+              <br>
+              <button type="submit"> Update book </button>
+
+            </form>
+          </div>
+    
+        </li>
+      </ul>
+
+
+      <script>
+        $('#up').click(showForm) ;
+        function showForm(){
+          $('#hiddenForm').show();
+          $('#book').hide();
+        }
+      </script>
+</body>
+
+
+<footer>
+
+  &copy; CODE FELLOWS 2019 - amman-301d2
+</footer>
+<script src="public/js/app.js"></script>
+
+</html>
