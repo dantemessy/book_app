@@ -26,11 +26,24 @@ app.use(express.urlencoded({ extended: true }));
 
 app.listen(PORT, () => console.log('first Baby Step'));
 
-// the (/) route which should show a list of books from the DB
 
-app.get('/', renderMainPage);
 
-// show detaile about spacific book
+// new route to add book to DB
+
+app.post('/books' , addToDatabase) ;
+function addToDatabase(req , res){
+
+  let {title, author, id, image, info, shelf} = req.body ;
+  let SQL = 'INSERT INTO books(author, title, isbn, image_url, description, bookshelf) VALUES ($1, $2, $3, $4 ,$5 ,$6);' ;
+  let values = [title, author, id, image, info, shelf] ;
+  return client.query(SQL , values)
+    .then(() => {
+      return res.redirect('/');
+    })
+}
+
+
+// show detaile about spacific book in the main page
 app.get('/details/:library_id' , spacificBook);
 
 function spacificBook ( req , res ) {
@@ -40,13 +53,15 @@ function spacificBook ( req , res ) {
   let values = [req.params.library_id] ;
   return client.query(SQL , values)
     .then((tableIdData) => {
-      // console.log(tableIdData.rows[0]);
+    // console.log(tableIdData.rows[0]);
       return res.render('pages/books/detail' , { theChoosenOne : tableIdData.rows[0]})
     })
 
 }
 
 /////////////////////////////////////
+// the (/) route which should show a list of books from the DB
+app.get('/', renderMainPage);
 
 function renderMainPage(req, res){
 
@@ -105,6 +120,7 @@ function booksData(bookTitle, choose) {
 /// the constuctor function
 
 function Book(data) {
+  this.tag= data.etag ;
   this.id = data.id ;
   this.image = (data.volumeInfo.imageLinks && data.volumeInfo.imageLinks.thumbnail) ? data.volumeInfo.imageLinks.thumbnail:'https://i.imgur.com/J5LVHEL.jpg';
   this.title = data.volumeInfo.title ? data.volumeInfo.title : 'Title Not Found !!';

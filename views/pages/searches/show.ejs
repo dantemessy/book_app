@@ -43,32 +43,41 @@
   <h4> Search Results</h4>
   <ul>
     <% result.forEach( book => { %>
+      <div class="book">
     <li>
-      <div id="book">
 
         <img src="<%= book.image %>">
         <h2> <%= book.title %> </h2> <br>
         <h2> <%= book.author %></h2>
         <p> <%= book.description %> </p>
-        <button id="hope" > Select this Book </button>
+        <button id="<%= book.tag %>" > Select this Book </button>
+      </div>
 
-        <form id="<%= book.id %>" action="" style="display: none;" name="hidden">
-          <img src="<%= book.image %>">
-          <h2> <%= book.title %> </h2> <br>
-          <h2> <%= book.author %></h2>
-          <p> <%= book.description %> </p>
-          <label for="shelf">Bookshelf</label>
-          <input type="text" name="shelf">
+        <form id="<%= book.id %>" action="/books" method="POST" style="display: none;" name="hidden">
+          
+          <input name="title" type="text" value="<%= book.title %>">
+          <br>
+          <input name="author" type="text" value="<%= book.author %>">
+          <br>
+          <input name="id" type="text" value="<%= book.id %>">
+          <br>
+          <input name="image" type="text" value=" <%= book.image %>">
+          <br>
+          <input name="info" type="text" value="<%= book.description %>">
+          <br>
+          <input type="text" name="shelf" placeholder="Enter a Bookshelf Name" required>
+          <br>
+          <button type="submit">Add to Database</button>
 
         </form>
-
+        
           <script>
-            $('#hope').click(showForm);
+            $('#<%= book.tag %>').click(showForm);
             function showForm(){
               $('#<%= book.id %>').show() ;
+              $('.book').hide();
             }
           </script>
-      </div>
 
     </li>
     <% }) %>

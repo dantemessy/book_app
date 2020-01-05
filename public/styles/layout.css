@@ -77,9 +77,7 @@
 /* Desktop */
 @media (min-width: 961px){
 
-    #secretForm {
-        position: fixed;
-    }
+  
     .index h2 {
         text-align: center;
         
