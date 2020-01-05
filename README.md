@@ -43,14 +43,25 @@ CREATE TABLE books (
  -->
 =============================================================================================================
 
-lab11
+Number and name of feature: 1 - UPDATE
 
-Number and name of feature: EJS
+Estimate of time needed to complete: 2H
 
-Estimate of time needed to complete: 3 hours
+Start time: 3:00 pm
 
-Start time: 2PM
+Finish time: 4:00 pm        
+    
+Actual time needed to complete: 1 h
 
-Finish time: 6PM
+<!--  -->
 
-Actual time needed to complete: 3 hours.
+Number and name of feature: 1 - DELETE
+
+Estimate of time needed to complete: 2H
+
+Start time: 4:00 pm
+
+Finish time: 5:00 pm        
+    
+Actual time needed to complete: 1 h
+
