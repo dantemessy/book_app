@@ -18,18 +18,56 @@ const DATABASE_URL = process.env.DATABASE_URL ;
 const pg = require('pg') ;
 const client = new pg.Client(DATABASE_URL) ;
 
-
+//using method over ride
+const methodOverride = require('method-override');
 
 app.set('view engine', 'ejs');
+
+
+// middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(methodOverride('_method')) ;
 
 
 app.listen(PORT, () => console.log('first Baby Step'));
 
 
 
-// new route to add book to DB
 
+// new route to update the database values ///////
+app.put('/update/:book_id', updateValues) ;
+function updateValues( req , res ){
+  let { title, author, isbn, image, description, bookshelf} = req.body ;
+  let SQL = 'UPDATE books SET author=$1, title=$2, isbn=$3, image_url=$4, description=$5, bookshelf=$6 WHERE id=$7 ;';
+  let values =[author, title, isbn, image, description ,bookshelf, req.params.book_id];
+  return client.query(SQL, values)
+    .then(() => {
+
+      return res.redirect(`/details/${values[6]}`);
+    })
+}
+
+
+
+// new route to delete data from database
+app.delete('/delete/:the_book' , deleteFunction) ;
+function deleteFunction(req , res){
+  let SQL = 'DELETE FROM books WHERE id=$1 ;' ;
+  let values = [req.params.the_book] ;
+
+  return client.query(SQL , values)
+    .then(() => {
+
+      return res.redirect('/');
+    })
+
+}
+
+
+
+
+
+// new route to add book to DB
 app.post('/books' , addToDatabase) ;
 function addToDatabase(req , res){
 
@@ -68,7 +106,7 @@ function renderMainPage(req, res){
   let sql = `SELECT * FROM books`;
   return client.query(sql)
     .then((tableData) => {
-      console.log('tabledata' , tableData.rows.length);
+      // console.log('tabledata' , tableData.rows);
       res.render('pages/index.ejs' , {library : tableData.rows});
 
     })
@@ -104,11 +142,7 @@ function booksData(bookTitle, choose) {
     .then(data => {
       // console.log(data.body.items);
       let book = data.body.items.map((one) => {
-        // if (one.volumeInfo.imageLinks.smallThumbnail && one.volumeInfo.title && one.volumeInfo.authors && one.volumeInfo.description) {
-        // console.log(one.volumeInfo.authors);
         return new Book(one);
-        // }
-        // console.log(book);
       })
       // console.log('hiiii', book);
       return book;

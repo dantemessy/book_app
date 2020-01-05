@@ -10,8 +10,8 @@
   <title>Book App</title>
 
   <link rel="stylesheet" type="text/css" href="/public/styles/reset.css">
-  <link rel="stylesheet" type="text/css" href="public/styles/layout.css">
-  <link rel="stylesheet" type="text/css" href="public/styles/base.css">
+  <link rel="stylesheet" type="text/css" href="/public/styles/base.css">
+  <link rel="stylesheet" type="text/css" href="/public/styles/layout.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 <header>
@@ -49,10 +49,11 @@
         <li>
           <div id="book" data-id="<%= book.id %>">
     
-            <img src="<%= book.image %>">
+            <img src="<%= book.image_url %>">
             <h2> <%= book.title %> </h2> <br>
             <h2> <%= book.author %></h2>
-            <a href="/details/<%= book.id %>"> View Details </a>
+            <br>
+            <a class="viewD" href="/details/<%= book.id %>"> View Details </a>
     
           </div>
     

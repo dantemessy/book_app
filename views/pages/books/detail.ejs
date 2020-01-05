@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Book App</title>
-  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
     <link rel="stylesheet" type="text/css" href="/public/styles/reset.css">
     <link rel="stylesheet" type="text/css" href="/public/styles/layout.css">
     <link rel="stylesheet" type="text/css" href="/public/styles/base.css">
@@ -47,7 +47,7 @@
         <li>
           <div id="book">
     
-            <img src="<%= theChoosenOne.image %>">
+            <img src="<%= theChoosenOne.image_url %>">
             <h2> <%= theChoosenOne.title %> </h2> 
             <br>
             <h2> <%= theChoosenOne.author %></h2>
@@ -57,13 +57,44 @@
             <h2> ISBN: <%= theChoosenOne.isbn %> </h2>
             <h2> Bookshelf: <%= theChoosenOne.bookshelf %> </h2>
 
+            <button id="up" >update details</button> 
+          </div>
 
-            
-    
+          <form action="/delete/<%= theChoosenOne.id %>?_method=DELETE" method="POST">
+            <button type="submit"> delete book </button>
+          </form>
+
+          <div>
+            <form action="/update/<%= theChoosenOne.id %>?_method=PUT" method="POST" id="hiddenForm" style="display: none;">
+
+              <input name="title" type="text" value="<%= theChoosenOne.title %>">
+              <br>
+              <input name="author" type="text" value="<%= theChoosenOne.author %>">
+              <br>
+              <input name="isbn" type="text" name="" id="" value="<%= theChoosenOne.isbn %>">
+              <br>
+              <input name="image" type="text" value="<%= theChoosenOne.image_url %>">
+              <br>
+              <input name="description" type="text" value="<%= theChoosenOne.description %>">
+              <br>
+              <input name="bookshelf" type="text" value="<%= theChoosenOne.bookshelf %>">
+              <br>
+              <button type="submit"> Update book </button>
+
+            </form>
           </div>
     
         </li>
       </ul>
+
+
+      <script>
+        $('#up').click(showForm) ;
+        function showForm(){
+          $('#hiddenForm').show();
+          $('#book').hide();
+        }
+      </script>
 </body>
 
 
